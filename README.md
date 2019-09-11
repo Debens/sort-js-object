@@ -1,9 +1,21 @@
 <div align="center">
   <h1>sort-js-object</h1>
-  ♠️ ♥️ Traverse and sort JS AST object keys ♦️ ♣️
-</div>
 
-<br />
+♠️ ♥️ Traverse and sort JS AST object keys ♦️ ♣️
+
+<p align="center">
+    <a href="https://marketplace.visualstudio.com/items?itemName=debens.sort-js-object">
+      <img src="https://vsmarketplacebadge.apphb.com/version/debens.sort-js-object.svg" alt="VS Code Marketplace" />
+    </a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=debens.sort-js-object">
+      <img alt="VS Code Marketplace Downloads" src="https://img.shields.io/visual-studio-marketplace/d/debens.sort-js-object">
+    </a>
+    <a href="https://marketplace.visualstudio.com/items?itemName=debens.sort-js-object">
+      <img src="https://vsmarketplacebadge.apphb.com/installs/debens.sort-js-object.svg" alt="VS Code Marketplace Installs" />
+    </a>
+</p>
+
+</div>
 
 <hr />
 
