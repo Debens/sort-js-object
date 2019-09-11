@@ -2,7 +2,7 @@
     "name": "sort-js-object",
     "displayName": "Sort JS Object",
     "description": "Traverse and sort JS AST object keys",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "publisher": "debens",
     "engines": {
         "vscode": "^1.38.0"
@@ -47,7 +47,7 @@
         "lint:all": "eslint --ext .js,.ts ./src",
         "lint:check": "eslint --print-config src/gatsby-node.ts | eslint-config-prettier-check",
         "lint:staged": "lint-staged",
-        "vscode:prepublish": "yarn test && yarn build"
+        "vscode:prepublish": "yarn build"
     },
     "devDependencies": {
         "@commitlint/cli": "^8.1.0",
