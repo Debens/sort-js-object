@@ -36,7 +36,6 @@
         "start": "tsc -watch",
         "build": "tsc",
         "compile": "yarn build --noEmit",
-        "vscode:prepublish": "yarn compile",
         "test": "jest --config jest.config.js",
         "test:watch": "yarn test --watch",
         "test:coverage": "yarn test --coverage",
@@ -47,7 +46,8 @@
         "lint": "eslint --ext .js,.ts",
         "lint:all": "eslint --ext .js,.ts ./src",
         "lint:check": "eslint --print-config src/gatsby-node.ts | eslint-config-prettier-check",
-        "lint:staged": "lint-staged"
+        "lint:staged": "lint-staged",
+        "vscode:prepublish": "yarn test && yarn build"
     },
     "devDependencies": {
         "@commitlint/cli": "^8.1.0",
