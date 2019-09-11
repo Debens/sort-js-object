@@ -8,7 +8,7 @@
 <hr />
 
 <div align="center">
-  <img src="example/sort-js-object.gif" />
+  <img src="https://github.com/Debens/sort-js-object/blob/master/example/sort-js-object.gif" />
 </div>
 
 <hr />
