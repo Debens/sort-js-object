@@ -58,6 +58,7 @@
         "@types/vscode": "^1.38.0",
         "@typescript-eslint/eslint-plugin": "^2.2.0",
         "@typescript-eslint/parser": "^2.2.0",
+        "circleci": "^0.3.3",
         "eslint": "^6.3.0",
         "eslint-config-prettier": "^6.3.0",
         "eslint-plugin-jest": "^22.17.0",
@@ -71,6 +72,7 @@
         "ts-jest": "^24.0.2",
         "tslint": "^5.12.1",
         "typescript": "^3.3.1",
+        "vsce": "^1.66.0",
         "vscode-test": "^1.0.2"
     },
     "dependencies": {

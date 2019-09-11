@@ -1,5 +1,5 @@
 hooks:
     commit-msg: 'commitlint -E HUSKY_GIT_PARAMS'
     pre-push: 'yarn test'
-    pre-commit: 'yarn lint:staged'
+    pre-commit: 'circleci config validate && yarn lint:staged'
 skipCI: true

@@ -1,0 +1,111 @@
+# Javascript Node CircleCI 2.0 configuration file
+#
+# Check https://circleci.com/docs/2.0/language-javascript/ for more details
+#
+version: 2.1
+
+defaults: &defaults
+    working_directory: ~/repo
+    docker:
+        - image: circleci/node:11
+
+commands:
+    version:
+        description: 'Increment version and commit back'
+        steps:
+            - run:
+                  name: Release
+                  command: |
+                      yarn release -m "chore(release): [skip ci]"
+            - run:
+                  name: Avoid hosts unknown for github
+                  command: mkdir ~/.ssh/ && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+            - run:
+                  name: Push
+                  command: git push --follow-tags origin master
+            - persist_to_workspace:
+                  root: ~/repo
+                  paths:
+                      - package.json
+    release:
+        description: 'Release new version'
+        steps:
+            - deploy:
+                  name: Publish
+                  command: vsce publish $(node -p -e "require('./package.json').version") -p $ACCESS_TOKEN
+    attach_to_workspace:
+        description: 'Attach to workspace'
+        steps:
+            - attach_workspace:
+                  at: ~/repo
+
+jobs:
+    bootstrap:
+        <<: *defaults
+        steps:
+            - checkout
+            - restore_cache:
+                  key: yarn-packages-v1-{{ checksum "yarn.lock" }}
+            - run: yarn install
+            - save_cache:
+                  key: yarn-packages-v1-{{ checksum "yarn.lock" }}
+                  paths:
+                      - node_modules
+            - persist_to_workspace:
+                  root: ~/repo
+                  paths:
+                      - .
+    build:
+        <<: *defaults
+        steps:
+            - attach_to_workspace
+            - run:
+                  name: Build
+                  command: yarn build
+            - persist_to_workspace:
+                  root: ~/repo
+                  paths:
+                      - build
+    test:
+        <<: *defaults
+        steps:
+            - attach_to_workspace
+            - restore_cache:
+                  key: jest-cache-v1-{{ arch }}
+            - run: yarn test:ci
+            - store_artifacts:
+                  name: coverage
+                  path: test/coverage
+            - save_cache:
+                  key: jest-cache-v1-{{ arch }}
+                  paths:
+                      - test/.jest
+
+    publish:
+        <<: *defaults
+        steps:
+            - attach_to_workspace
+            - version
+            - release
+workflows:
+    version: 2
+    default:
+        jobs:
+            - bootstrap
+            - build:
+                  requires:
+                      - bootstrap
+            - test:
+                  requires:
+                      - bootstrap
+            - publish_approval:
+                  type: approval
+                  requires:
+                      - build
+                      - test
+                  filters:
+                      branches:
+                          only: master
+            - publish:
+                  requires:
+                      - publish_approval

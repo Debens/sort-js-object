@@ -8,7 +8,7 @@ import { pipe, compose } from 'rambda';
 export const activate = (context: vscode.ExtensionContext) => {
     const disposable = vscode.commands.registerCommand(
         'sort-js-object.sort',
-        compose<string, any, any>(
+        compose(
             setSelectedText,
             pipe<string, string>(
                 getSelectedText,
