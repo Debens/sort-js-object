@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "outDir": "build",
+        "pretty": true,
+        "declaration": false,
+        "noEmitOnError": true,
+        "target": "esnext",
+        "lib": ["es6", "es7", "esnext"],
+        "allowJs": true,
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "removeComments": false,
+        "noEmitHelpers": true,
+        "importHelpers": true,
+        "strict": true,
+        "strictNullChecks": false,
+        "noUnusedLocals": false,
+        "noUnusedParameters": false,
+        "noFallthroughCasesInSwitch": true,
+        "allowUnreachableCode": false,
+        "forceConsistentCasingInFileNames": true,
+        "allowSyntheticDefaultImports": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "noImplicitAny": false
+    },
+    "include": ["src", "test/*.ts"],
+    "exclude": ["node_modules", ".vscode-test"]
+}

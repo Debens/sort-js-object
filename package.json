@@ -1,0 +1,83 @@
+{
+    "name": "sort-js-object",
+    "displayName": "Sort JS Object",
+    "description": "Traverse and sort JS AST object keys",
+    "version": "0.0.1",
+    "publisher": "debens",
+    "engines": {
+        "vscode": "^1.38.0"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/Debens/sort-js-object"
+    },
+    "categories": [
+        "Formatters"
+    ],
+    "activationEvents": [
+        "onCommand:sort-js-object.sort"
+    ],
+    "main": "./build/index.js",
+    "contributes": {
+        "commands": [
+            {
+                "command": "sort-js-object.sort",
+                "title": "Sort JS"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "sort-js-object.sort",
+                "key": "Alt+S"
+            }
+        ]
+    },
+    "scripts": {
+        "start": "tsc -watch",
+        "build": "tsc",
+        "compile": "yarn build --noEmit",
+        "vscode:prepublish": "yarn compile",
+        "test": "jest --config jest.config.js",
+        "test:watch": "yarn test --watch",
+        "test:coverage": "yarn test --coverage",
+        "test:ci": "yarn test:coverage --ci --silent",
+        "release": "standard-version",
+        "release:alpha": "yarn release --prerelease",
+        "format": "prettier ./src/**/*",
+        "lint": "eslint --ext .js,.ts",
+        "lint:all": "eslint --ext .js,.ts ./src",
+        "lint:check": "eslint --print-config src/gatsby-node.ts | eslint-config-prettier-check",
+        "lint:staged": "lint-staged"
+    },
+    "devDependencies": {
+        "@commitlint/cli": "^8.1.0",
+        "@commitlint/config-conventional": "^8.1.0",
+        "@types/jest": "^24.0.18",
+        "@types/node": "^10.12.21",
+        "@types/prettier": "^1.18.2",
+        "@types/vscode": "^1.38.0",
+        "@typescript-eslint/eslint-plugin": "^2.2.0",
+        "@typescript-eslint/parser": "^2.2.0",
+        "eslint": "^6.3.0",
+        "eslint-config-prettier": "^6.3.0",
+        "eslint-plugin-jest": "^22.17.0",
+        "fs": "^0.0.1-security",
+        "husky": "^3.0.5",
+        "jest": "^24.9.0",
+        "lint-staged": "^9.2.5",
+        "path": "^0.12.7",
+        "prettier": "^1.18.2",
+        "standard-version": "^7.0.0",
+        "ts-jest": "^24.0.2",
+        "tslint": "^5.12.1",
+        "typescript": "^3.3.1",
+        "vscode-test": "^1.0.2"
+    },
+    "dependencies": {
+        "@babel/generator": "^7.6.0",
+        "@babel/parser": "^7.1.3",
+        "@babel/traverse": "^7.6.0",
+        "@babel/types": "^7.6.1",
+        "rambda": "^3.0.1"
+    }
+}

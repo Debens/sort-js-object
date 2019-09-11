@@ -1,0 +1,12 @@
+build
+node_modules
+
+.vscode-test/
+*.vsix
+
+
+*-error.log
+.npmrc
+
+.jest
+coverage/
