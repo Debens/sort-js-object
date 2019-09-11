@@ -2,10 +2,10 @@
     "name": "sort-js-object",
     "displayName": "Sort JS Object",
     "description": "Traverse and sort JS AST object keys",
-    "version": "0.0.3",
+    "version": "0.0.4",
     "publisher": "debens",
     "engines": {
-        "vscode": "^1.12.0"
+        "vscode": "^1.38.0"
     },
     "repository": {
         "type": "git",
