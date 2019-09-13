@@ -8,7 +8,7 @@ const files = fs.readdirSync(__dirname);
 files
     .filter(file => file.includes('.input.'))
     // uncomment to filter specs
-    // .filter(file => file.includes('declaration'))
+    // .filter(file => file.includes('spread'))
     .forEach(inputFile => {
         const outputFile = inputFile.replace('.input.', '.output.');
         const [input, output] = [inputFile, outputFile].map(file => {
@@ -22,6 +22,6 @@ files
         const name = inputFile.substr(0, inputFile.indexOf('.input.'));
 
         it(`then ${name} should match the output`, () => {
-            expect(sortText(input)).toEqual(output);
+            expect(sortText(input, { interface: true, enum: true })).toEqual(output);
         });
     });

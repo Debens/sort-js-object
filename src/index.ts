@@ -2,18 +2,16 @@ import { sortText } from './sort';
 import { getSelectedText, setSelectedText } from './utils/text';
 import * as vscode from 'vscode';
 import { noop } from './utils/functions';
+import { getOptions } from './utils/options';
 
-import { pipe, compose } from 'rambda';
+import * as R from 'ramda';
 
 export const activate = (context: vscode.ExtensionContext) => {
     const disposable = vscode.commands.registerCommand(
         'sort-js-object.sort',
-        compose(
+        R.pipe(
+            R.converge(sortText, [getSelectedText, getOptions]),
             setSelectedText,
-            pipe<string, string>(
-                getSelectedText,
-                sortText,
-            ),
         ),
     );
 

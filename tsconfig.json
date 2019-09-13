@@ -24,6 +24,6 @@
         "experimentalDecorators": true,
         "noImplicitAny": false
     },
-    "include": ["src", "test/*.ts"],
-    "exclude": ["node_modules", ".vscode-test"]
+    "include": ["src", "test/index.spec.ts"],
+    "exclude": ["node_modules", ".vscode-test", "*.output.*"]
 }
