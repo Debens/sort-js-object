@@ -39,12 +39,11 @@ ext install debens.sort-js-object
 
 ## Usage
 
-### Using Command Palette (CMD/CTRL + Shift + P)
+Highlight a valid block of JS/TS code and open the command palette using `cmd + shift + p`, search for `Sort JS` and hit enter.
 
-```
-1. Highlight a valid code block
-2. CMD + Shift + P -> Sort JS
-```
+### Hotkeys
+
+-   Format highlighted code: `alt + s`
 
 ## Support
 
@@ -52,4 +51,4 @@ All of ES6, Typescript and legacy decorators should be support. Pull requests ar
 
 ## How does it work?
 
-sort-js-object find the highlighted text in the current editor, and using this text builds a AST using [@babel/parser](https://babeljs.io/docs/en/babel-parser). Then using [@babel/traverse](https://babeljs.io/docs/en/babel-traverse) sorts all the object nodes in the tree.
+sort-js-object finds the highlighted text in the current editor, then using this text builds a AST using [@babel/parser](https://babeljs.io/docs/en/babel-parser), then reorder node arrays on tree using [@babel/traverse](https://babeljs.io/docs/en/babel-traverse).
