@@ -5,7 +5,7 @@
 
 <p align="center">
     <a href="https://github.com/Debens/sort-js-object/actions">
-      <img src="https://github.com/Debens/sort-js-object/workflows/Test & Build/badge.svg" alt="Github Actions" />
+      <img src="https://action-badges.now.sh/debens/sort-js-object" alt="Github Workflow" />
     </a>
     <a href="https://marketplace.visualstudio.com/items?itemName=debens.sort-js-object">
       <img src="https://vsmarketplacebadge.apphb.com/version/debens.sort-js-object.svg" alt="VS Code Marketplace" />
