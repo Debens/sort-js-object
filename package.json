@@ -15,20 +15,31 @@
         "Formatters"
     ],
     "activationEvents": [
-        "onCommand:sort-js-object.sort"
+        "onCommand:sort-js-object.sort",
+        "onCommand:sort-js-object.sort-file"
     ],
     "main": "./build/index.js",
     "contributes": {
         "commands": [
             {
                 "command": "sort-js-object.sort",
-                "title": "Sort JS"
+                "title": "Sort Highlighted JS"
+            },
+            {
+                "command": "sort-js-object.sort-file",
+                "title": "Sort JS File"
             }
         ],
         "keybindings": [
             {
                 "command": "sort-js-object.sort",
-                "key": "Alt+S"
+                "key": "alt+s",
+                "when": "editorHasSelection"
+            },
+            {
+                "command": "sort-js-object.sort-file",
+                "key": "ctrl+alt+s",
+                "when": "editorFocus"
             }
         ],
         "configuration": {
