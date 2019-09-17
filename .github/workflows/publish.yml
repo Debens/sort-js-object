@@ -1,0 +1,41 @@
+name: Publish
+
+on: [release]
+
+jobs:
+    test:
+        name: Test
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/setup-node@v1
+              with:
+                  node-version: 11
+            - run: yarn
+            - run: yarn test
+    package:
+        name: Build JS
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: lannonbr/vsce-action@master
+              args: 'package -o release.vsix'
+            - uses: actions/upload-artifact@master
+              with:
+                  name: release
+                  path: release.vsix
+    publish:
+        name: Publish to Marketplace
+        needs:
+            - test
+            - build
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v1
+            - uses: actions/download-artifact@master
+              with:
+                  name: release
+            - uses: lannonbr/vsce-action@master
+              args: 'publish --packagePath release.vsix --yarn -p $ACCESS_TOKEN'
+              env:
+                  ACCESS_TOKEN: ${{ secret.ACCESS_TOKEN }}
